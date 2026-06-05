@@ -1,2 +1,2 @@
-# el7oot-store
-EL7OOT Menswear Online Store
+<h1>EL7OOT Menswear</h1>
+<p>قريباً...</p>
