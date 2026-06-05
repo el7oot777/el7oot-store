@@ -3,167 +3,190 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>إتمام الطلب - EL7OOT</title>
+<title>EL7OOT Menswear</title>
+
 <style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
 body{
 background:#111;
-font-family:Arial,sans-serif;
 color:#fff;
+}
+
+header{
+background:#000;
 padding:20px;
-margin:0;
+text-align:center;
+font-size:32px;
+font-weight:bold;
+color:#f5c542;
 }
-.container{
-max-width:700px;
-margin:auto;
+
+.hero{
+padding:30px;
+text-align:center;
 }
+
+.hero h1{
+margin-bottom:10px;
+}
+
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:20px;
+padding:20px;
+}
+
 .card{
 background:#1a1a1a;
-padding:20px;
 border-radius:15px;
-margin-bottom:20px;
+overflow:hidden;
 box-shadow:0 0 10px rgba(255,215,0,.15);
 }
-h1,h2{
-text-align:center;
-color:#f5c542;
-}
-input,select,textarea{
+
+.card img{
 width:100%;
-padding:14px;
-margin-top:10px;
-margin-bottom:15px;
-background:#222;
-border:1px solid #444;
-border-radius:10px;
-color:white;
-font-size:16px;
-box-sizing:border-box;
+height:350px;
+object-fit:cover;
 }
-.summary{
-line-height:2;
-font-size:18px;
-}
-.total{
-font-size:24px;
-font-weight:bold;
-color:#f5c542;
-}
-button{
-width:100%;
+
+.info{
 padding:15px;
-background:#f5c542;
-border:none;
-border-radius:10px;
+}
+
+.title{
 font-size:20px;
 font-weight:bold;
-cursor:pointer;
+margin-bottom:10px;
+}
+
+.price{
+color:#f5c542;
+font-size:24px;
+font-weight:bold;
+margin-bottom:10px;
+}
+
+.size{
+margin-bottom:15px;
+color:#ccc;
+}
+
+.btn{
+display:block;
+width:100%;
+padding:12px;
+background:#f5c542;
+color:#000;
+text-decoration:none;
+text-align:center;
+font-weight:bold;
+border-radius:10px;
+}
+
+footer{
+background:#000;
+text-align:center;
+padding:20px;
+margin-top:20px;
 }
 </style>
+
 </head>
 <body>
-<div class="container">
-<div class="card">
-<h1>إتمام الطلب</h1>
-</div>
-<div class="card">
-<h2>بيانات العميل</h2>
-<input id="name" placeholder="الاسم بالكامل">
-<input id="phone" placeholder="رقم الهاتف">
-<select id="gov" onchange="updatePrice()">
-<option value="">اختر المحافظة</option>
-<option>القاهرة</option>
-<option>الجيزة</option>
-<option>الإسكندرية</option>
-<option>الغربية</option>
-<option>الدقهلية</option>
-<option>الشرقية</option>
-<option>المنوفية</option>
-<option>القليوبية</option>
-<option>كفر الشيخ</option>
-<option>البحيرة</option>
-<option>دمياط</option>
-<option>بورسعيد</option>
-<option>الإسماعيلية</option>
-<option>السويس</option>
-<option>الفيوم</option>
-<option>بني سويف</option>
-<option>المنيا</option>
-<option>أسيوط</option>
-<option>سوهاج</option>
-<option>قنا</option>
-<option>الأقصر</option>
-<option>أسوان</option>
-<option>الوادي الجديد</option>
-<option>البحر الأحمر</option>
-<option>مطروح</option>
-<option>شمال سيناء</option>
-<option>جنوب سيناء</option>
-</select>
-<textarea id="address" placeholder="العنوان بالكامل"></textarea>
-</div>
-<div class="card">
-<h2>ملخص الطلب</h2>
-<div class="summary">
 
-📦 المنتج:
-💰 السعر:
- ج.م
+<header>
+EL7OOT Menswear
+</header>
 
-🚚 الشحن:
-0 ج.م
+<section class="hero">
+<h1>أحدث الملابس الرجالي</h1>
+<p>جودة عالية وأسعار مميزة</p>
+</section>
 
-<div class="total">
-💵 الإجمالي:
-<span id="total"></span> ج.م
+<section class="products">
+
+<div class="card">
+<img src="https://raw.githubusercontent.com/el7oot777/el7oot-store/main/WhatsApp%20Image%202026-06-05%20at%2010.21.36%20PM.jpeg">
+<div class="info">
+<div class="title">بنطال وايد ليج ميلتون زيتي</div>
+<div class="price">350 ج.م</div>
+<div class="size">L - XL - 2XL</div>
+<a class="btn" href="order.html?product=بنطال وايد ليج ميلتون زيتي">اطلب الآن</a>
 </div>
 </div>
+
+<div class="card">
+<img src="https://raw.githubusercontent.com/el7oot777/el7oot-store/main/WhatsApp%20Image%202026-06-05%20at%2010.21.38%20PM.jpeg">
+<div class="info">
+<div class="title">بنطال وايد ليج ميلتون برغندي</div>
+<div class="price">300 ج.م</div>
+<div class="size">L - XL - 2XL</div>
+<a class="btn" href="order.html?product=بنطال وايد ليج ميلتون برغندي">اطلب الآن</a>
 </div>
-<button onclick="sendOrder()">
-تأكيد الطلب
-</button>
 </div>
-<script>
-const params=new URLSearchParams(window.location.search);
-const product=params.get("product") || "";
-const price=parseInt(params.get("price")) || 0;
-document.getElementById("product").innerText=product;
-document.getElementById("price").innerText=price;
-document.getElementById("total").innerText=price;
-function updatePrice(){
-const delta=[
-"القاهرة","الجيزة","الإسكندرية",
-"الغربية","الدقهلية","الشرقية",
-"المنوفية","القليوبية","كفر الشيخ",
-"البحيرة","دمياط","بورسعيد",
-"الإسماعيلية","السويس"
-];
-const gov=document.getElementById("gov").value;
-let shipping=150;
-if(delta.includes(gov)){
-shipping=130;
-}
-document.getElementById("shipping").innerText=shipping;
-document.getElementById("total").innerText=price+shipping;
-}
-function sendOrder(){
-const name=document.getElementById("name").value;
-const phone=document.getElementById("phone").value;
-const gov=document.getElementById("gov").value;
-const address=document.getElementById("address").value;
-const shipping=document.getElementById("shipping").innerText;
-const total=document.getElementById("total").innerText;
-const text=`🖤 طلب جديد من EL7OOT 🖤
-👕 المنتج: ${product}
-💵 السعر: ${price} ج.م
-🚚 الشحن: ${shipping} ج.م
-💰 الإجمالي: ${total} ج.م
-👤 الاسم: ${name}
-📞 الموبايل: ${phone}
-📍 المحافظة: ${gov}
-🏡 العنوان: ${address}
-💳 الدفع: كاش عند الاستلام`;
-window.open(`https://wa.me/201033950845?text=${encodeURIComponent(text)}`,"_blank");
-}
-</script>
+
+<div class="card">
+<img src="https://raw.githubusercontent.com/el7oot777/el7oot-store/main/WhatsApp%20Image%202026-06-05%20at%2010.21.47%20PM.jpeg">
+<div class="info">
+<div class="title">بنطال وايد ليج ميلتون بني</div>
+<div class="price">350 ج.م</div>
+<div class="size">L</div>
+<a class="btn" href="order.html?product=بنطال وايد ليج ميلتون بني">اطلب الآن</a>
+</div>
+</div>
+
+<div class="card">
+<img src="https://raw.githubusercontent.com/el7oot777/el7oot-store/main/WhatsApp%20Image%202026-06-05%20at%2010.21.47%20PM%20(1).jpeg">
+<div class="info">
+<div class="title">تيشيرت انترلوك مستورد ياقه ديور</div>
+<div class="price">420 ج.م</div>
+<div class="size">M - L - XL - 2XL</div>
+<a class="btn" href="order.html?product=تيشيرت انترلوك مستورد ياقه ديور">اطلب الآن</a>
+</div>
+</div>
+
+<div class="card">
+<img src="https://raw.githubusercontent.com/el7oot777/el7oot-store/main/WhatsApp%20Image%202026-06-05%20at%2010.21.47%20PM%20(2).jpeg">
+<div class="info">
+<div class="title">تيشيرت انترلوك مستورد</div>
+<div class="price">490 ج.م</div>
+<div class="size">M - L - XL - 2XL</div>
+<a class="btn" href="order.html?product=تيشيرت انترلوك مستورد">اطلب الآن</a>
+</div>
+</div>
+
+<div class="card">
+<img src="https://raw.githubusercontent.com/el7oot777/el7oot-store/main/WhatsApp%20Image%202026-06-05%20at%2010.21.47%20PM%20(3).jpeg">
+<div class="info">
+<div class="title">تيشيرت خام مستورد</div>
+<div class="price">360 ج.م</div>
+<div class="size">M - L - XL</div>
+<a class="btn" href="order.html?product=تيشيرت خام مستورد اخضر">اطلب الآن</a>
+</div>
+</div>
+
+<div class="card">
+<img src="https://raw.githubusercontent.com/el7oot777/el7oot-store/main/WhatsApp%20Image%202026-06-05%20at%2010.21.47%20PM%20(4).jpeg">
+<div class="info">
+<div class="title">تيشيرت خام مستورد</div>
+<div class="price">350 ج.م</div>
+<div class="size">L - XL - 2XL - 3XL</div>
+<a class="btn" href="order.html?product=تيشيرت خام مستورد ابيض">اطلب الآن</a>
+</div>
+</div>
+
+</section>
+
+<footer>
+EL7OOT Menswear © 2026
+</footer>
+
 </body>
 </html>
