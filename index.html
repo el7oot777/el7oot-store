@@ -1,10 +1,123 @@
 <!DOCTYPE html>
-<html>
+<html lang="ar" dir="rtl">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>EL7OOT Menswear</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#0d0d0d;
+color:white;
+}
+
+header{
+background:black;
+padding:20px;
+text-align:center;
+font-size:32px;
+font-weight:bold;
+color:#f5c542;
+}
+
+.hero{
+padding:30px;
+text-align:center;
+}
+
+.hero h1{
+font-size:36px;
+margin-bottom:10px;
+}
+
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+padding:20px;
+}
+
+.card{
+background:#151515;
+border-radius:15px;
+padding:15px;
+text-align:center;
+box-shadow:0 0 10px rgba(255,215,0,.2);
+}
+
+.card img{
+width:100%;
+border-radius:10px;
+}
+
+.price{
+font-size:24px;
+color:#f5c542;
+font-weight:bold;
+margin:10px 0;
+}
+
+button{
+background:#f5c542;
+color:black;
+border:none;
+padding:12px 20px;
+border-radius:10px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+}
+
+footer{
+text-align:center;
+padding:20px;
+margin-top:30px;
+background:black;
+}
+</style>
 </head>
+
 <body>
-<h1>EL7OOT Menswear</h1>
-<p>الموقع تحت الإنشاء</p>
+
+<header>
+EL7OOT Menswear
+</header>
+
+<section class="hero">
+<h1>أحدث الملابس الرجالي</h1>
+<p>جودة عالية وأسعار مميزة</p>
+</section>
+
+<section class="products">
+
+<div class="card">
+<img src="https://picsum.photos/400/500" alt="">
+<h2>تيشيرت أوفر سايز</h2>
+<div class="price">450 ج.م</div>
+<button>اطلب الآن</button>
+</div>
+
+<div class="card">
+<img src="https://picsum.photos/401/500" alt="">
+<h2>بنطلون جينز</h2>
+<div class="price">750 ج.م</div>
+<button>اطلب الآن</button>
+</div>
+
+<div class="card">
+<img src="https://picsum.photos/402/500" alt="">
+<h2>قميص كاجوال</h2>
+<div class="price">600 ج.م</div>
+<button>اطلب الآن</button>
+</div>
+
+</section>
+
+<footer>
+EL7OOT Menswear © 2026
+</footer>
+
 </body>
 </html>
