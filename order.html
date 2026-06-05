@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>إتمام الطلب</title>
+
+<style>
+body{
+background:#111;
+color:white;
+font-family:Arial,sans-serif;
+padding:20px;
+}
+
+.container{
+max-width:600px;
+margin:auto;
+}
+
+h1{
+text-align:center;
+color:#f5c542;
+margin-bottom:30px;
+}
+
+input,textarea{
+width:100%;
+padding:15px;
+margin-bottom:15px;
+background:#1b1b1b;
+border:1px solid #333;
+border-radius:10px;
+color:white;
+font-size:16px;
+}
+
+button{
+width:100%;
+padding:15px;
+background:#f5c542;
+border:none;
+border-radius:10px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+}
+
+button:hover{
+opacity:.9;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>إتمام الطلب</h1>
+
+<input type="text" id="name" placeholder="الاسم بالكامل">
+
+<input type="text" id="phone" placeholder="رقم الهاتف">
+
+<input type="text" id="address" placeholder="العنوان بالكامل">
+
+<textarea id="notes" placeholder="ملاحظات إضافية"></textarea>
+
+<button onclick="sendOrder()">تأكيد الطلب</button>
+
+</div>
+
+<script>
+
+const params=new URLSearchParams(window.location.search);
+
+const product=params.get("product") || "منتج";
+
+function sendOrder(){
+
+let name=document.getElementById("name").value;
+let phone=document.getElementById("phone").value;
+let address=document.getElementById("address").value;
+let notes=document.getElementById("notes").value;
+
+let text=
+`طلب جديد%0A%0A`+
+`المنتج: ${product}%0A`+
+`الاسم: ${name}%0A`+
+`الموبايل: ${phone}%0A`+
+`العنوان: ${address}%0A`+
+`ملاحظات: ${notes}`;
+
+window.open(`https://wa.me/201002685845?text=${text}`,"_blank");
+
+}
+
+</script>
+
+</body>
+</html>
