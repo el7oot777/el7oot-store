@@ -187,24 +187,35 @@ shipping=130;
 document.getElementById("shipping").innerText=shipping;
 document.getElementById("total").innerText=price+shipping;
 }
+<script>
 function sendOrder(){
+
 const name=document.getElementById("name").value;
 const phone=document.getElementById("phone").value;
 const gov=document.getElementById("gov").value;
 const address=document.getElementById("address").value;
 const shipping=document.getElementById("shipping").innerText;
 const total=document.getElementById("total").innerText;
+
 const text=`🖤 طلب جديد من EL7OOT 🖤
+
 👕 المنتج: ${product}
+
 💵 السعر: ${price} ج.م
+
 🚚 الشحن: ${shipping} ج.م
+
 💰 الإجمالي: ${total} ج.م
+
 👤 الاسم: ${name}
+
 📞 الموبايل: ${phone}
+
 📍 المحافظة: ${gov}
+
 🏡 العنوان: ${address}
-💳 طريقة الدفع:
-يرجى تحويل المبلغ إلى
+
+💳 يرجى تحويل المبلغ إلى:
 
 01002685845
 
@@ -214,9 +225,12 @@ const text=`🖤 طلب جديد من EL7OOT 🖤
 
 📱 ورقم الهاتف الذي تم التحويل منه
 
-✅ لتأكيد الطلب وتجهيزه للشحن
-window.open(`https://wa.me/201033950845?text=${encodeURIComponent(text)}`,"_blank");
+✅ لتأكيد الطلب وتجهيزه للشحن`;
+
+window.open(
+`https://wa.me/201033950845?text=${encodeURIComponent(text)}`,
+"_blank"
+);
+
 }
 </script>
-</body>
-</html>
