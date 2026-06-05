@@ -3,99 +3,167 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>إتمام الطلب</title>
-
+<title>إتمام الطلب - EL7OOT</title>
 <style>
 body{
 background:#111;
-color:white;
 font-family:Arial,sans-serif;
+color:#fff;
 padding:20px;
+margin:0;
 }
-
 .container{
-max-width:600px;
+max-width:700px;
 margin:auto;
 }
-
-h1{
+.card{
+background:#1a1a1a;
+padding:20px;
+border-radius:15px;
+margin-bottom:20px;
+box-shadow:0 0 10px rgba(255,215,0,.15);
+}
+h1,h2{
 text-align:center;
 color:#f5c542;
-margin-bottom:30px;
 }
-
-input,textarea{
+input,select,textarea{
 width:100%;
-padding:15px;
+padding:14px;
+margin-top:10px;
 margin-bottom:15px;
-background:#1b1b1b;
-border:1px solid #333;
+background:#222;
+border:1px solid #444;
 border-radius:10px;
 color:white;
 font-size:16px;
+box-sizing:border-box;
 }
-
+.summary{
+line-height:2;
+font-size:18px;
+}
+.total{
+font-size:24px;
+font-weight:bold;
+color:#f5c542;
+}
 button{
 width:100%;
 padding:15px;
 background:#f5c542;
 border:none;
 border-radius:10px;
-font-size:18px;
+font-size:20px;
 font-weight:bold;
 cursor:pointer;
 }
-
-button:hover{
-opacity:.9;
-}
 </style>
 </head>
-
 <body>
-
 <div class="container">
-
+<div class="card">
 <h1>إتمام الطلب</h1>
-
-<input type="text" id="name" placeholder="الاسم بالكامل">
-
-<input type="text" id="phone" placeholder="رقم الهاتف">
-
-<input type="text" id="address" placeholder="العنوان بالكامل">
-
-<textarea id="notes" placeholder="ملاحظات إضافية"></textarea>
-
-<button onclick="sendOrder()">تأكيد الطلب</button>
-
 </div>
+<div class="card">
+<h2>بيانات العميل</h2>
+<input id="name" placeholder="الاسم بالكامل">
+<input id="phone" placeholder="رقم الهاتف">
+<select id="gov" onchange="updatePrice()">
+<option value="">اختر المحافظة</option>
+<option>القاهرة</option>
+<option>الجيزة</option>
+<option>الإسكندرية</option>
+<option>الغربية</option>
+<option>الدقهلية</option>
+<option>الشرقية</option>
+<option>المنوفية</option>
+<option>القليوبية</option>
+<option>كفر الشيخ</option>
+<option>البحيرة</option>
+<option>دمياط</option>
+<option>بورسعيد</option>
+<option>الإسماعيلية</option>
+<option>السويس</option>
+<option>الفيوم</option>
+<option>بني سويف</option>
+<option>المنيا</option>
+<option>أسيوط</option>
+<option>سوهاج</option>
+<option>قنا</option>
+<option>الأقصر</option>
+<option>أسوان</option>
+<option>الوادي الجديد</option>
+<option>البحر الأحمر</option>
+<option>مطروح</option>
+<option>شمال سيناء</option>
+<option>جنوب سيناء</option>
+</select>
+<textarea id="address" placeholder="العنوان بالكامل"></textarea>
+</div>
+<div class="card">
+<h2>ملخص الطلب</h2>
+<div class="summary">
 
+📦 المنتج:
+💰 السعر:
+ ج.م
+
+🚚 الشحن:
+0 ج.م
+
+<div class="total">
+💵 الإجمالي:
+<span id="total"></span> ج.م
+</div>
+</div>
+</div>
+<button onclick="sendOrder()">
+تأكيد الطلب
+</button>
+</div>
 <script>
-
 const params=new URLSearchParams(window.location.search);
-
-const product=params.get("product") || "منتج";
-
-function sendOrder(){
-
-let name=document.getElementById("name").value;
-let phone=document.getElementById("phone").value;
-let address=document.getElementById("address").value;
-let notes=document.getElementById("notes").value;
-
-let text=
-`طلب جديد%0A%0A`+
-`المنتج: ${product}%0A`+
-`الاسم: ${name}%0A`+
-`الموبايل: ${phone}%0A`+
-`العنوان: ${address}%0A`+
-`ملاحظات: ${notes}`;
-
-window.open(`https://wa.me/201002685845?text=${text}`,"_blank");
-
+const product=params.get("product") || "";
+const price=parseInt(params.get("price")) || 0;
+document.getElementById("product").innerText=product;
+document.getElementById("price").innerText=price;
+document.getElementById("total").innerText=price;
+function updatePrice(){
+const delta=[
+"القاهرة","الجيزة","الإسكندرية",
+"الغربية","الدقهلية","الشرقية",
+"المنوفية","القليوبية","كفر الشيخ",
+"البحيرة","دمياط","بورسعيد",
+"الإسماعيلية","السويس"
+];
+const gov=document.getElementById("gov").value;
+let shipping=150;
+if(delta.includes(gov)){
+shipping=130;
 }
-
+document.getElementById("shipping").innerText=shipping;
+document.getElementById("total").innerText=price+shipping;
+}
+function sendOrder(){
+const name=document.getElementById("name").value;
+const phone=document.getElementById("phone").value;
+const gov=document.getElementById("gov").value;
+const address=document.getElementById("address").value;
+const shipping=document.getElementById("shipping").innerText;
+const total=document.getElementById("total").innerText;
+const text=`🖤 طلب جديد من EL7OOT 🖤
+👕 المنتج: ${product}
+💵 السعر: ${price} ج.م
+🚚 الشحن: ${shipping} ج.م
+💰 الإجمالي: ${total} ج.م
+👤 الاسم: ${name}
+📞 الموبايل: ${phone}
+📍 المحافظة: ${gov}
+🏡 العنوان: ${address}
+💳 الدفع: كاش عند الاستلام`;
+window.open(`https://wa.me/201033950845?text=${encodeURIComponent(text)}`,"_blank");
+}
 </script>
-
 </body>
 </html>
