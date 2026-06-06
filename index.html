@@ -209,7 +209,10 @@ style="flex:1">
 </a>
 
 <button
-onclick="addToCart('${cols[0]}','${cols[1]}','${cols[3]}')"
+class="cart-btn"
+data-name="${cols[0]}"
+data-price="${cols[1]}"
+data-image="${cols[3]}"
 style="
 flex:1;
 background:#222;
@@ -228,6 +231,24 @@ cursor:pointer;
     `;
   });
 });
+  setTimeout(() => {
+
+document.querySelectorAll(".cart-btn")
+.forEach(btn => {
+
+btn.addEventListener("click", () => {
+
+addToCart(
+btn.dataset.name,
+btn.dataset.price,
+btn.dataset.image
+);
+
+});
+
+});
+
+},1000);
 </script>
 
 </section>
