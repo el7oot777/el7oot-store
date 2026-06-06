@@ -202,11 +202,29 @@ gap:8px;
 margin-top:10px;
 ">
 
+<div style="display:flex;gap:8px;margin-top:10px">
+
 <a class="btn"
-href="order.html?product=${cols[0]}&price=${cols[1]}"
+href="order.html?product=${product.name}&price=${product.price}"
 style="flex:1">
 اطلب الآن
 </a>
+
+<button
+onclick="addToCart('${product.name}','${product.price}','${product.image}')"
+style="
+flex:1;
+background:#222;
+color:#f5c542;
+border:1px solid #f5c542;
+border-radius:12px;
+font-weight:bold;
+cursor:pointer;
+">
+🛒 للسلة
+</button>
+
+</div>
 
 </div>
 
@@ -221,6 +239,40 @@ style="flex:1">
 });
 
 </script>
+<script>
 
+function addToCart(name,price,image){
+
+let cart =
+JSON.parse(localStorage.getItem("cart")) || [];
+
+let existing =
+cart.find(item => item.name === name);
+
+if(existing){
+
+existing.qty += 1;
+
+}else{
+
+cart.push({
+name:name,
+price:price,
+image:image,
+qty:1
+});
+
+}
+
+localStorage.setItem(
+"cart",
+JSON.stringify(cart)
+);
+
+alert("تمت الإضافة للسلة");
+
+}
+
+</script>
 </body>
 </html>
