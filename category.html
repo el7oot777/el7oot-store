@@ -379,5 +379,32 @@ border-radius:12px;
 ">
 
 </div>
+  <script>
+
+const imageModal =
+document.getElementById("imageModal");
+
+const modalImg =
+document.getElementById("modalImg");
+
+document.addEventListener("click",(e)=>{
+
+if(e.target.tagName === "IMG"){
+
+modalImg.src = e.target.src;
+
+imageModal.style.display = "flex";
+
+}
+
+});
+
+imageModal.onclick = ()=>{
+
+imageModal.style.display = "none";
+
+};
+
+</script>
 </body>
 </html>
