@@ -43,20 +43,27 @@ gap:12px;
 padding:12px;
 }
 .card{
-background:#1a1a1a;
+background:#171717;
 border-radius:15px;
 overflow:hidden;
 box-shadow:0 0 10px rgba(255,215,0,.15);
+
+display:flex;
+flex-direction:column;
+height:100%;
 }
 
 .card img{
 width:100%;
-height:220px;
+height:200px;
 object-fit:cover;
 }
 
 .info{
 padding:15px;
+display:flex;
+flex-direction:column;
+flex:1;
 }
 
 .title{
@@ -71,7 +78,10 @@ font-weight:bold;
 margin-bottom:10px;
 }
 
-.size{
+.size
+.btn{
+margin-top:auto;
+}
 margin-bottom:15px;
 color:#ccc;
 }
