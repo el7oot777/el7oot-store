@@ -168,7 +168,20 @@ font-weight:bold;
 <h1>أحدث الملابس الرجالي</h1>
 <p>جودة عالية وأسعار مميزة</p>
 </section>
-
+<div style="padding:15px">
+<input
+id="search"
+placeholder="ابحث عن منتج..."
+style="
+width:100%;
+padding:14px;
+border:none;
+border-radius:12px;
+background:#171717;
+color:white;
+font-size:16px;
+">
+</div>
 <section class="products" id="products">
 
 
@@ -179,6 +192,8 @@ fetch(SHEET_URL)
 .then(res => res.text())
 .then(data => {
   const rows = data.trim().split("\n").slice(1);
+  const searchInput =
+document.getElementById("search");
   const container = document.getElementById("products");
 
   rows.forEach(row => {
