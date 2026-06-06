@@ -196,22 +196,17 @@ ${cols[1]} ج.م
 ${cols[2]}
 </div>
 
-<div style="
-display:flex;
-gap:8px;
-margin-top:10px;
-">
 
 <div style="display:flex;gap:8px;margin-top:10px">
 
 <a class="btn"
-href="order.html?product=${product.name}&price=${product.price}"
+href="order.html?product=${cols[0]}&price=${cols[1]}"
 style="flex:1">
 اطلب الآن
 </a>
 
 <button
-onclick="addToCart('${product.name}','${product.price}','${product.image}')"
+onclick="addToCart('${cols[0]}','${cols[1]}','${cols[3]}')"
 style="
 flex:1;
 background:#222;
@@ -225,7 +220,6 @@ cursor:pointer;
 </button>
 
 </div>
-
 </div>
 
 </div>
