@@ -228,7 +228,9 @@ cursor:pointer;
 <footer>
 EL7OOT Menswear © 2026
 </footer>
+
 <script>
+
 function addToCart(name,price,image){
 
 let cart =
@@ -262,35 +264,27 @@ updateCartCount();
 alert("تمت الإضافة للسلة");
 
 }
+
+function updateCartCount(){
+
+let cart =
+JSON.parse(localStorage.getItem("cart")) || [];
+
+let count = 0;
+
+cart.forEach(item => {
+
+count += Number(item.qty || 1);
+
+});
+
+document.getElementById("cart-count").innerText =
+count;
+
+}
+
+updateCartCount();
+
 </script>
-  <div style="position:relative">
-
-<a href="cart.html" style="
-font-size:30px;
-cursor:pointer;
-text-decoration:none;
-">
-🛒
-</a>
-
-<span id="cart-count" style="
-position:absolute;
-top:-8px;
-right:-10px;
-background:red;
-color:white;
-width:20px;
-height:20px;
-border-radius:50%;
-font-size:12px;
-display:flex;
-align-items:center;
-justify-content:center;
-font-weight:bold;
-">
-0
-</span>
-
-</div>
 </body>
 </html>
