@@ -206,8 +206,24 @@ text-decoration:none;
 </div>
 <script>
 const params=new URLSearchParams(window.location.search);
-const product=params.get("product") || "";
-const price=parseInt(params.get("price")) || 0;
+
+let product=params.get("product") || "";
+let price=parseInt(params.get("price")) || 0;
+
+const checkoutCart =
+JSON.parse(localStorage.getItem("checkoutCart")) || [];
+
+if(checkoutCart.length){
+
+product = checkoutCart
+.map(item => item.name)
+.join(" + ");
+
+price = checkoutCart
+.reduce((sum,item)=>sum+Number(item.price),0);
+
+}
+
 document.getElementById("product").innerText=product;
 document.getElementById("price").innerText=price;
 document.getElementById("total").innerText=price;
