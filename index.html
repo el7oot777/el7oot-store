@@ -133,6 +133,8 @@ color:#f5c542;
 EL7OOT
 </div>
 
+<div style="position:relative">
+
 <a href="cart.html" style="
 font-size:30px;
 cursor:pointer;
@@ -140,6 +142,26 @@ text-decoration:none;
 ">
 🛒
 </a>
+
+<span id="cart-count" style="
+position:absolute;
+top:-8px;
+right:-10px;
+background:red;
+color:white;
+width:20px;
+height:20px;
+border-radius:50%;
+font-size:12px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:bold;
+">
+0
+</span>
+
+</div>
 
 </header>
 <section class="hero">
@@ -224,8 +246,38 @@ localStorage.setItem(
 JSON.stringify(cart)
 );
 
+updateCartCount();
 alert("تمت الإضافة للسلة");
 }
 </script>
+  <div style="position:relative">
+
+<a href="cart.html" style="
+font-size:30px;
+cursor:pointer;
+text-decoration:none;
+">
+🛒
+</a>
+
+<span id="cart-count" style="
+position:absolute;
+top:-8px;
+right:-10px;
+background:red;
+color:white;
+width:20px;
+height:20px;
+border-radius:50%;
+font-size:12px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:bold;
+">
+0
+</span>
+
+</div>
 </body>
 </html>
