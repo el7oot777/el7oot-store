@@ -182,7 +182,14 @@ fetch(SHEET_URL)
   const container = document.getElementById("products");
 
   rows.forEach(row => {
-    const cols = row.split(",");
+
+const cols = row.match(/(".*?"|[^",]+)(?=\s*,|\s*$)/g);
+
+if(!cols) return;
+
+for(let i=0;i<cols.length;i++){
+cols[i] = cols[i].replace(/^"|"$/g,'');
+}
 
     container.innerHTML += `
       <div class="card">
