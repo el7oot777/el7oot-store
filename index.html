@@ -4,8 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>EL7OOT Menswear</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+
 <style>
+
 *{
 margin:0;
 padding:0;
@@ -15,14 +18,19 @@ font-family:'Cairo',sans-serif;
 
 body{
 background:#111;
-color:#fff;
+color:white;
 }
 
 header{
 background:#000;
 padding:20px;
-text-align:center;
-font-size:32px;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.logo{
+font-size:30px;
 font-weight:bold;
 color:#f5c542;
 }
@@ -33,301 +41,119 @@ text-align:center;
 }
 
 .hero h1{
+font-size:38px;
 margin-bottom:10px;
 }
 
-.products{
+.hero p{
+color:#ccc;
+}
+
+.categories{
 display:grid;
 grid-template-columns:repeat(2,1fr);
-gap:12px;
-padding:12px;
+gap:14px;
+padding:14px;
 }
+
 .card{
 background:#171717;
-border-radius:15px;
+border-radius:18px;
 overflow:hidden;
-box-shadow:0 0 18px rgba(245,197,66,.12);
-
-display:flex;
-flex-direction:column;
-height:100%;
+text-decoration:none;
+color:white;
+box-shadow:0 0 20px rgba(245,197,66,.12);
 }
 
 .card img{
 width:100%;
-height:200px;
+height:220px;
 object-fit:cover;
 }
 
-.info{
-padding:15px;
-display:flex;
-flex-direction:column;
-flex:1;
-}
-
-.title{
-font-size:15px;
-font-weight:700;
-min-height:48px;
-line-height:1.5;
-}
-
-.price{
-color:#f5c542;
+.card-title{
+padding:16px;
+text-align:center;
 font-size:18px;
-font-weight:bold;
-margin-bottom:10px;
-}
-
-.size{
-margin-bottom:15px;
-color:#bdbdbd;
-min-height:30px;
-}
-
-.btn{
-margin-top:auto;
-display:block;
-width:100%;
-padding:12px;
-background:linear-gradient(135deg,#f5c542,#ffbf00);
-color:#111;
-text-decoration:none;
-text-align:center;
 font-weight:800;
-border-radius:12px;
-box-shadow:0 8px 20px rgba(245,197,66,.2);
 }
 
-footer{
-background:#000;
-text-align:center;
-padding:20px;
-margin-top:20px;
-}
-.card{
-transition:.3s;
-}
-
-.card:hover{
-transform:translateY(-3px);
-}
 </style>
-
 </head>
 <body>
 
-<header style="
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:20px;
-">
-
-<div style="
-font-size:28px;
-font-weight:bold;
-color:#f5c542;
-">
-EL7OOT
-</div>
-
-<div style="position:relative">
-
-<a href="cart.html" style="
-font-size:30px;
-cursor:pointer;
-text-decoration:none;
-">
-🛒
-</a>
-
-<span id="cart-count" style="
-position:absolute;
-top:-8px;
-right:-10px;
-background:red;
-color:white;
-width:20px;
-height:20px;
-border-radius:50%;
-font-size:12px;
-display:flex;
-align-items:center;
-justify-content:center;
-font-weight:bold;
-">
-0
-</span>
-
-</div>
-
+<header>
+<div class="logo">EL7OOT</div>
 </header>
-<section class="hero">
-<h1>أحدث الملابس الرجالي</h1>
-<p>جودة عالية وأسعار مميزة</p>
-</section>
-<div style="padding:15px">
-<input
-id="search"
-placeholder="ابحث عن منتج..."
-style="
-width:100%;
-padding:14px;
-border:none;
-border-radius:12px;
-background:#171717;
-color:white;
-font-size:16px;
-">
-</div>
-<section class="products" id="products">
 
+<section class="hero">
+<h1>الأقسام</h1>
+<p>اختر القسم الذي تريد تصفحه</p>
+</section>
+
+<section class="categories" id="categories"></section>
 
 <script>
-const SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSL4chzLtjr_560-y7wFCv6AKlJN7WsaXmH-q3t-Yi8r9aLHtCTZ7wgv5SbBJst7opkvhjEEUs36JtU/pub?output=csv";
+
+const SHEET_URL =
+"https://docs.google.com/spreadsheets/d/e/2PACX-1vSL4chzLtjr_560-y7wFCv6AKlJN7WsaXmH-q3t-Yi8r9aLHtCTZ7wgv5SbBJst7opkvhjEEUs36JtU/pub?output=csv";
 
 fetch(SHEET_URL)
 .then(res => res.text())
 .then(data => {
-  const rows = data.trim().split("\n").slice(1);
-  const searchInput =
-document.getElementById("search");
-  const container = document.getElementById("products");
 
-  rows.forEach(row => {
+const rows =
+data.trim().split("\n").slice(1);
 
-const cols = row.match(/(".*?"|[^",]+)(?=\s*,|\s*$)/g);
+const categoriesContainer =
+document.getElementById("categories");
+
+const categories = {};
+
+rows.forEach(row=>{
+
+const cols =
+row.match(/(".*?"|[^",]+)(?=\s*,|\s*$)/g);
 
 if(!cols) return;
 
 for(let i=0;i<cols.length;i++){
-cols[i] = cols[i].replace(/^"|"$/g,'');
+cols[i]=cols[i].replace(/^"|"$/g,'');
 }
 
-    container.innerHTML += `
-      <div class="card">
-        <a href="${cols[3]}" target="_blank">
-  <img src="${cols[3]}">
-</a>
-        <div class="info">
-          <div class="title">${cols[0]}</div>
-          <div class="price">${cols[1]} ج.م</div>
-          <div class="size">${cols[2]}</div>
-          <div style="display:flex;gap:8px;margin-top:10px">
+const image = cols[3];
+const category = cols[4];
 
-<a class="btn"
-href="order.html?product=${cols[0]}&price=${cols[1]}"
-style="flex:1">
-اطلب الآن
-</a>
+if(!categories[category]){
 
-<button
-class="cart-btn"
-data-name="${cols[0]}"
-data-price="${cols[1]}"
-data-image="${cols[3]}"
-style="
-flex:1;
-background:#222;
-color:#f5c542;
-border:1px solid #f5c542;
-border-radius:12px;
-font-weight:bold;
-cursor:pointer;
-">
-🛒 للسلة
-</button>
+categories[category] = image;
 
+}
+
+});
+
+Object.keys(categories).forEach(cat=>{
+
+categoriesContainer.innerHTML += `
+
+<a class="card"
+href="category.html?cat=${encodeURIComponent(cat)}">
+
+<img src="${categories[cat]}">
+
+<div class="card-title">
+${cat}
 </div>
-        </div>
-      </div>
-    `;
-  });
-});
-  setTimeout(() => {
 
-document.querySelectorAll(".cart-btn")
-.forEach(btn => {
+</a>
 
-btn.addEventListener("click", () => {
-
-addToCart(
-btn.dataset.name,
-btn.dataset.price,
-btn.dataset.image
-);
+`;
 
 });
 
 });
 
-},1000);
 </script>
 
-</section>
-
-<footer>
-EL7OOT Menswear © 2026
-</footer>
-
-<script>
-
-function addToCart(name,price,image){
-
-let cart =
-JSON.parse(localStorage.getItem("cart")) || [];
-
-let existing =
-cart.find(item => item.name === name);
-
-if(existing){
-
-existing.qty += 1;
-
-}else{
-
-cart.push({
-name:name,
-price:price,
-image:image,
-qty:1
-});
-
-}
-
-localStorage.setItem(
-"cart",
-JSON.stringify(cart)
-);
-
-updateCartCount();
-
-alert("تمت الإضافة للسلة");
-
-}
-
-function updateCartCount(){
-
-let cart =
-JSON.parse(localStorage.getItem("cart")) || [];
-
-let count = 0;
-
-cart.forEach(item => {
-
-count += Number(item.qty || 1);
-
-});
-
-document.getElementById("cart-count").innerText =
-count;
-
-}
-
-updateCartCount();
-
-</script>
 </body>
 </html>
