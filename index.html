@@ -170,9 +170,29 @@ fetch(SHEET_URL)
           <div class="title">${cols[0]}</div>
           <div class="price">${cols[1]} ج.م</div>
           <div class="size">${cols[2]}</div>
-          <a class="btn" href="order.html?product=${cols[0]}&price=${cols[1]}">
-            اطلب الآن
-          </a>
+          <div style="display:flex;gap:8px;margin-top:10px">
+
+<a class="btn"
+href="order.html?product=${cols[0]}&price=${cols[1]}"
+style="flex:1">
+اطلب الآن
+</a>
+
+<button
+onclick="addToCart('${cols[0]}','${cols[1]}','${cols[3]}')"
+style="
+flex:1;
+background:#222;
+color:#f5c542;
+border:1px solid #f5c542;
+border-radius:12px;
+font-weight:bold;
+cursor:pointer;
+">
+🛒 للسلة
+</button>
+
+</div>
         </div>
       </div>
     `;
@@ -185,6 +205,26 @@ fetch(SHEET_URL)
 <footer>
 EL7OOT Menswear © 2026
 </footer>
+<script>
+function addToCart(name,price,image){
 
+let cart =
+JSON.parse(localStorage.getItem("cart")) || [];
+
+cart.push({
+name:name,
+price:price,
+image:image,
+qty:1
+});
+
+localStorage.setItem(
+"cart",
+JSON.stringify(cart)
+);
+
+alert("تمت الإضافة للسلة");
+}
+</script>
 </body>
 </html>
