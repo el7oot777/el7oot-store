@@ -99,6 +99,15 @@ cursor:pointer;
 <option>شمال سيناء</option>
 <option>جنوب سيناء</option>
 </select>
+  <select id="size">
+<option value="">اختر المقاس</option>
+<option>S</option>
+<option>M</option>
+<option>L</option>
+<option>XL</option>
+<option>2XL</option>
+<option>3XL</option>
+</select>
 <textarea id="address" placeholder="العنوان بالكامل"></textarea>
 </div>
 <div class="card">
@@ -190,6 +199,7 @@ function sendOrder(){
 const name=document.getElementById("name").value;
 const phone=document.getElementById("phone").value;
 const gov=document.getElementById("gov").value;
+const size=document.getElementById("size").value;
 const address=document.getElementById("address").value;
 const shipping=document.getElementById("shipping").innerText;
 const total=document.getElementById("total").innerText;
@@ -209,6 +219,8 @@ const text=`🖤 طلب جديد من EL7OOT 🖤
 📞 الموبايل: ${phone}
 
 📍 المحافظة: ${gov}
+
+📏 المقاس: ${size}
 
 🏡 العنوان: ${address}
 
