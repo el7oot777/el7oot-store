@@ -146,77 +146,37 @@ cursor:pointer;
 <p>جودة عالية وأسعار مميزة</p>
 </section>
 
-<section class="products">
+<section class="products" id="products">
 
-<div class="card">
-<img src="https://raw.githubusercontent.com/el7oot777/el7oot-store/main/WhatsApp%20Image%202026-06-05%20at%2010.21.36%20PM.jpeg">
-<div class="info">
-<div class="title">بنطال وايد ليج ميلتون زيتي</div>
-<div class="price">350 ج.م</div>
-<div class="size">L - XL - 2XL</div>
-<a class="btn" href="order.html?product=بنطال وايد ليج ميلتون زيتي&price=350">اطلب الآن</a>
-</div>
-</div>
 
-<div class="card">
-<img src="https://raw.githubusercontent.com/el7oot777/el7oot-store/main/WhatsApp%20Image%202026-06-05%20at%2010.21.38%20PM.jpeg">
-<div class="info">
-<div class="title">بنطال وايد ليج ميلتون برغندي</div>
-<div class="price">300 ج.م</div>
-<div class="size">L - XL - 2XL</div>
-<a class="btn" href="order.html?product=بنطال وايد ليج ميلتون برغندي&price=300">اطلب الآن</a>
-</div>
-</div>
+<script>
+const SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSL4chzLtjr_560-y7wFCv6AKlJN7WsaXmH-q3t-Yi8r9aLHtCTZ7wgv5SbBJst7opkvhjEEUs36JtU/pub?output=csv";
 
-<div class="card">
-<img src="https://raw.githubusercontent.com/el7oot777/el7oot-store/main/WhatsApp%20Image%202026-06-05%20at%2010.21.47%20PM.jpeg">
-<div class="info">
-<div class="title">بنطال وايد ليج ميلتون بني</div>
-<div class="price">350 ج.م</div>
-<div class="size">L</div>
-<a class="btn" href="order.html?product=بنطال وايد ليج ميلتون بني&price=350">اطلب الآن</a>
-</div>
-</div>
+fetch(SHEET_URL)
+.then(res => res.text())
+.then(data => {
+  const rows = data.trim().split("\n").slice(1);
+  const container = document.getElementById("products");
 
-<div class="card">
-<img src="https://raw.githubusercontent.com/el7oot777/el7oot-store/main/WhatsApp%20Image%202026-06-05%20at%2010.21.47%20PM%20(1).jpeg">
-<div class="info">
-<div class="title">تيشيرت انترلوك مستورد ياقه ديور</div>
-<div class="price">420 ج.م</div>
-<div class="size">M - L - XL - 2XL</div>
-<a class="btn" href="order.html?product=تيشيرت انترلوك مستورد ياقه ديور&price=420">اطلب الآن</a>
-</div>
-</div>
+  rows.forEach(row => {
+    const cols = row.split(",");
 
-<div class="card">
-<img src="https://raw.githubusercontent.com/el7oot777/el7oot-store/main/WhatsApp%20Image%202026-06-05%20at%2010.21.47%20PM%20(2).jpeg">
-<div class="info">
-<div class="title">تيشيرت انترلوك مستورد</div>
-<div class="price">490 ج.م</div>
-<div class="size">M - L - XL - 2XL</div>
-<a class="btn" href="order.html?product=تيشيرت انترلوك مستورد&price=490">اطلب الآن</a>
-</div>
-</div>
-
-<div class="card">
-<img src="https://raw.githubusercontent.com/el7oot777/el7oot-store/main/WhatsApp%20Image%202026-06-05%20at%2010.21.47%20PM%20(3).jpeg">
-<div class="info">
-<div class="title">تيشيرت خام مستورد</div>
-<div class="price">360 ج.م</div>
-<div class="size">M - L - XL</div>
-<a class="btn" href="order.html?product=تيشيرت خام مستورد اخضر&price=360">اطلب الآن</a>
-</div>
-</div>
-
-<div class="card">
-<img src="https://raw.githubusercontent.com/el7oot777/el7oot-store/main/WhatsApp%20Image%202026-06-05%20at%2010.21.47%20PM%20(4).jpeg">
-<div class="info">
-<div class="title">تيشيرت خام مستورد</div>
-<div class="price">350 ج.م</div>
-<div class="size">L - XL - 2XL - 3XL</div>
-<a class="btn" href="order.html?product=تيشيرت خام مستورد ابيض&price=350">اطلب الآن</a>
-</div>
-</div>
+    container.innerHTML += `
+      <div class="card">
+        <img src="${cols[3]}">
+        <div class="info">
+          <div class="title">${cols[0]}</div>
+          <div class="price">${cols[1]} ج.م</div>
+          <div class="size">${cols[2]}</div>
+          <a class="btn" href="order.html?product=${cols[0]}&price=${cols[1]}">
+            اطلب الآن
+          </a>
+        </div>
+      </div>
+    `;
+  });
+});
+</script>
 
 </section>
 
