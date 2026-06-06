@@ -206,6 +206,11 @@ renderCart();
 
 function checkout(){
 
+localStorage.setItem(
+"checkoutCart",
+JSON.stringify(cart)
+);
+
 window.location.href="order.html";
 
 }
